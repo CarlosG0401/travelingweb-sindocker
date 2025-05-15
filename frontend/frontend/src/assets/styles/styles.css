@@ -189,8 +189,11 @@ header {
     height: auto;
 }
 
-.wrapper{
-    position: absolute;
+.wrapper {
+    position: fixed;
+    top: 25%; /* este es el que modificaremos */
+    left: 40%;
+    transform: translate(-50%, -50%) scale(0); /* combinación de posición y escala */
     width: 300px;
     height: 540px;
     background: transparent;
@@ -202,9 +205,7 @@ header {
     justify-content: center;
     align-items: center;
     overflow: hidden;
-    transform: scale(0);
-    transition: transform .5s ease, height .2s ease;
-    margin-bottom: 800px;
+    transition: transform .5s ease, height .2s ease, top 0.3s ease;
     z-index: 100;
 }
 

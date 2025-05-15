@@ -1,11 +1,77 @@
 import './assets/styles/styles.css';
-import React from 'react';
+import React, { useEffect } from 'react';
 import logoImg from './assets/images/imagen-foto-removebg-preview.png';
 import facebookImg from './assets/images/facebook.png';
 import twitterImg from './assets/images/gorjeo.png';
 import instagramImg from './assets/images/instagram.png';
 
 function App() {
+
+    useEffect(() => {
+    const wrapper = document.querySelector('.wrapper');
+    const loginLink = document.querySelector('.login-link');
+    const registerLink = document.querySelector('.register-link');
+    const btnPopup = document.querySelector('.btnLogin-popup');
+    const iconClose = document.querySelector('.icon-close');
+
+    if (registerLink) {
+      registerLink.addEventListener('click', () => {
+        wrapper?.classList.add('active');
+      });
+    }
+
+    if (loginLink) {
+      loginLink.addEventListener('click', () => {
+        wrapper?.classList.remove('active');
+      });
+    }
+
+    if (btnPopup) {
+      btnPopup.addEventListener('click', () => {
+        wrapper?.classList.add('active-popup');
+      });
+    }
+
+    if (iconClose) {
+      iconClose.addEventListener('click', () => {
+        wrapper?.classList.remove('active-popup');
+      });
+    }
+    return () => {
+      // Limpieza por si se desmonta el componente
+      registerLink?.removeEventListener('click', () => {});
+      loginLink?.removeEventListener('click', () => {});
+      btnPopup?.removeEventListener('click', () => {});
+      iconClose?.removeEventListener('click', () => {});
+    };
+  }, []);
+
+  useEffect(() => {
+    const wrapper = document.querySelector('.wrapper');
+    const footer = document.getElementById('footer');
+
+    const handleScroll = () => {
+      if (!wrapper || !footer) return;
+
+      const footerTop = footer.getBoundingClientRect().top;
+      const wrapperHeight = wrapper.offsetHeight;
+      const viewportHeight = window.innerHeight;
+
+      if (footerTop < viewportHeight) {
+        // Calcula cuánto empujar hacia arriba
+        const offset = viewportHeight - footerTop + 20;
+        wrapper.style.top = `calc(25% - ${offset}px)`; // Ajusta top dinámicamente
+      } else {
+        wrapper.style.top = '25%'; // Restaura posición normal
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+
+
   return (
     <>
       <header>
@@ -35,7 +101,65 @@ function App() {
         </form>
       </div>
 
-      <footer>
+  <div className="wrapper">
+    <span className="icon-close">
+      <ion-icon name="close-circle-sharp"></ion-icon>
+    </span>
+    <div className="form-box login">
+      <h2>Login</h2>
+      <form action="php/login_usuario_be.php" method="post">
+        <div className="input-box">
+          <span className="icon"><ion-icon name="mail-sharp"></ion-icon></span>
+          <input type="email" name="email" required />
+          <label>Email</label>
+        </div>
+        <div className="input-box">
+          <span className="icon"><ion-icon name="lock-closed-sharp"></ion-icon></span>
+          <input type="password" name="password" required />
+          <label>Contraseña</label>
+        </div>
+        <div className="remember-forgot">
+          <label><input type="checkbox" />Recuérdame</label>
+          <a href="#">¿Olvidó contraseña?</a>
+        </div>
+        <button type="submit" className="btn">Login</button>
+        <div className="login-register">
+          <p>¿No tienes cuenta?<a href="#" className="register-link">Registrarme</a></p>
+        </div>
+      </form>
+    </div>
+
+      <div className="form-box register">
+        <h2>Registro</h2>
+        <form action="php/registro_usuario_be.php" method="post">
+          <div className="input-box">
+            <span className="icon"><ion-icon name="person-circle-sharp"></ion-icon></span>
+            <input type="text" name="username" required />
+            <label>Usuario</label>
+          </div>
+          <div className="input-box">
+            <span className="icon"><ion-icon name="mail-sharp"></ion-icon></span>
+            <input type="email" name="email" required />
+            <label>Email</label>
+          </div>
+          <div className="input-box">
+            <span className="icon"><ion-icon name="lock-closed-sharp"></ion-icon></span>
+            <input type="password" name="password" required />
+            <label>Contraseña</label>
+          </div>
+          <div className="remember-forgot">
+            <label><input type="checkbox" />Estoy de acuerdo con los términos y condiciones</label>
+          </div>
+          <button type="submit" className="btn">Register</button>
+          <div className="login-register">
+            <p>¿Ya tienes una cuenta?<a href="#" className="login-link">Login</a></p>
+          </div>
+        </form>
+      </div>
+  </div>
+
+
+      <footer id="footer">
         <div className="footer-content">
           <div className="address-section">
             <p>TravelingWeb</p>
@@ -67,6 +191,7 @@ function App() {
       </footer>
 
       {/* Ionicons CDN */}
+
       <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
       <script noModule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
     </>
