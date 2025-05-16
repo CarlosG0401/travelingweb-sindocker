@@ -107,7 +107,7 @@ function App() {
     </span>
     <div className="form-box login">
       <h2>Login</h2>
-      <form action="php/login_usuario_be.php" method="post">
+      <form action="http://localhost:8000/login_usuario_be.php" method="post">
         <div className="input-box">
           <span className="icon"><ion-icon name="mail-sharp"></ion-icon></span>
           <input type="email" name="email" required />
@@ -131,7 +131,7 @@ function App() {
 
       <div className="form-box register">
         <h2>Registro</h2>
-        <form action="php/registro_usuario_be.php" method="post">
+        <form action="http://localhost:8000/registro_usuario_be.php" method="post">
           <div className="input-box">
             <span className="icon"><ion-icon name="person-circle-sharp"></ion-icon></span>
             <input type="text" name="username" required />
