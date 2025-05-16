@@ -1,13 +1,23 @@
 import './assets/styles/styles.css';
 import React, { useEffect } from 'react';
+
+// Imágenes generales
 import logoImg from './assets/images/imagen-foto-removebg-preview.png';
 import facebookImg from './assets/images/facebook.png';
 import twitterImg from './assets/images/gorjeo.png';
 import instagramImg from './assets/images/instagram.png';
 
-function App() {
+// Imágenes de banderas
+import unionImg from './assets/images/union.jpeg';
+import unitedImg from './assets/images/united.png';
+import englandImg from './assets/images/england.png';
+import ColombiaImg from './assets/images/colombia.png';
+import BrasilImg from './assets/images/bandera-de-brasil.jpg';
+import ArgentinaImg from './assets/images/argentina.png';
+import PeruImg from './assets/images/peru.png';
 
-    useEffect(() => {
+function App() {
+  useEffect(() => {
     const wrapper = document.querySelector('.wrapper');
     const loginLink = document.querySelector('.login-link');
     const registerLink = document.querySelector('.register-link');
@@ -37,8 +47,8 @@ function App() {
         wrapper?.classList.remove('active-popup');
       });
     }
+
     return () => {
-      // Limpieza por si se desmonta el componente
       registerLink?.removeEventListener('click', () => {});
       loginLink?.removeEventListener('click', () => {});
       btnPopup?.removeEventListener('click', () => {});
@@ -54,23 +64,19 @@ function App() {
       if (!wrapper || !footer) return;
 
       const footerTop = footer.getBoundingClientRect().top;
-      const wrapperHeight = wrapper.offsetHeight;
       const viewportHeight = window.innerHeight;
 
       if (footerTop < viewportHeight) {
-        // Calcula cuánto empujar hacia arriba
         const offset = viewportHeight - footerTop + 20;
-        wrapper.style.top = `calc(25% - ${offset}px)`; // Ajusta top dinámicamente
+        wrapper.style.top = `calc(25% - ${offset}px)`;
       } else {
-        wrapper.style.top = '25%'; // Restaura posición normal
+        wrapper.style.top = '25%';
       }
     };
 
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
-
-
 
   return (
     <>
@@ -92,7 +98,11 @@ function App() {
       </div>
 
       <div className="search-container">
-        <form className="search-form" method="post" action="http://localhost/backend/buscar_viajes.php">
+        <form
+          className="search-form"
+          method="post"
+          action="http://localhost/backend/buscar_viajes.php"
+        >
           <input type="text" name="origen" placeholder="Lugar de Origen" className="search-input" required />
           <input type="text" name="destino" placeholder="Lugar de Destino" className="search-input" required />
           <input type="date" name="fecha_inicio" className="search-input" required />
@@ -101,64 +111,100 @@ function App() {
         </form>
       </div>
 
-  <div className="wrapper">
-    <span className="icon-close">
-      <ion-icon name="close-circle-sharp"></ion-icon>
-    </span>
-    <div className="form-box login">
-      <h2>Login</h2>
-      <form action="http://localhost:8000/login_usuario_be.php" method="post">
-        <div className="input-box">
-          <span className="icon"><ion-icon name="mail-sharp"></ion-icon></span>
-          <input type="email" name="email" required />
-          <label>Email</label>
+      {/* BLOQUE DE EXCHANGE */}
+      <div className="exchange-container">
+        <div className="animated-exchange">
+          <div className="exchange-item"><img src={unionImg} alt="Euro" className="flag" /><span className="exchange-rate">1 EUR = 850 CLP</span></div>
+          <div className="exchange-item"><img src={unitedImg} alt="USD" className="flag" /><span className="exchange-rate">1 USD = 800 CLP</span></div>
+          <div className="exchange-item"><img src={englandImg} alt="Libra" className="flag" /><span className="exchange-rate">1 GBP = 1.200 CLP</span></div>
+          <div className="exchange-item"><img src={BrasilImg} alt="Real" className="flag" /><span className="exchange-rate">1 BRL = 167 CLP</span></div>
+          <div className="exchange-item"><img src={ArgentinaImg} alt="ARS" className="flag" /><span className="exchange-rate">1 ARS = 0,93 CLP</span></div>
+          <div className="exchange-item"><img src={ColombiaImg} alt="COL" className="flag" /><span className="exchange-rate">1 COL = 0,21 CLP</span></div>
+          <div className="exchange-item"><img src={PeruImg} alt="PEN" className="flag" /><span className="exchange-rate">1 PEN = 241 CLP</span></div>
+          <div className="exchange-item"><img src={unionImg} alt="Euro" className="flag" /><span className="exchange-rate">1 EUR = 850 CLP</span></div>
+          <div className="exchange-item"><img src={unitedImg} alt="USD" className="flag" /><span className="exchange-rate">1 USD = 800 CLP</span></div>
+          <div className="exchange-item"><img src={englandImg} alt="Libra" className="flag" /><span className="exchange-rate">1 GBP = 1.200 CLP</span></div>
+          <div className="exchange-item"><img src={BrasilImg} alt="Real" className="flag" /><span className="exchange-rate">1 BRL = 167 CLP</span></div>
+          <div className="exchange-item"><img src={ArgentinaImg} alt="ARS" className="flag" /><span className="exchange-rate">1 ARS = 0,93 CLP</span></div>
+          <div className="exchange-item"><img src={ColombiaImg} alt="COL" className="flag" /><span className="exchange-rate">1 COL = 0,21 CLP</span></div>
+          <div className="exchange-item"><img src={PeruImg} alt="PEN" className="flag" /><span className="exchange-rate">1 PEN = 241 CLP</span></div>
+          <div className="exchange-item"><img src={unionImg} alt="Euro" className="flag" /><span className="exchange-rate">1 EUR = 850 CLP</span></div>
+          <div className="exchange-item"><img src={unitedImg} alt="USD" className="flag" /><span className="exchange-rate">1 USD = 800 CLP</span></div>
+          <div className="exchange-item"><img src={englandImg} alt="Libra" className="flag" /><span className="exchange-rate">1 GBP = 1.200 CLP</span></div>
+          <div className="exchange-item"><img src={BrasilImg} alt="Real" className="flag" /><span className="exchange-rate">1 BRL = 167 CLP</span></div>
+          <div className="exchange-item"><img src={ArgentinaImg} alt="ARS" className="flag" /><span className="exchange-rate">1 ARS = 0,93 CLP</span></div>
+          <div className="exchange-item"><img src={ColombiaImg} alt="COL" className="flag" /><span className="exchange-rate">1 COL = 0,21 CLP</span></div>
+          <div className="exchange-item"><img src={PeruImg} alt="PEN" className="flag" /><span className="exchange-rate">1 PEN = 241 CLP</span></div>
+          <div className="exchange-item"><img src={unionImg} alt="Euro" className="flag" /><span className="exchange-rate">1 EUR = 850 CLP</span></div>
+          <div className="exchange-item"><img src={unitedImg} alt="USD" className="flag" /><span className="exchange-rate">1 USD = 800 CLP</span></div>
+          <div className="exchange-item"><img src={englandImg} alt="Libra" className="flag" /><span className="exchange-rate">1 GBP = 1.200 CLP</span></div>
+          <div className="exchange-item"><img src={BrasilImg} alt="Real" className="flag" /><span className="exchange-rate">1 BRL = 167 CLP</span></div>
+          <div className="exchange-item"><img src={ArgentinaImg} alt="ARS" className="flag" /><span className="exchange-rate">1 ARS = 0,93 CLP</span></div>
+          <div className="exchange-item"><img src={ColombiaImg} alt="COL" className="flag" /><span className="exchange-rate">1 COL = 0,21 CLP</span></div>
+          <div className="exchange-item"><img src={PeruImg} alt="PEN" className="flag" /><span className="exchange-rate">1 PEN = 241 CLP</span></div>
+          
         </div>
-        <div className="input-box">
-          <span className="icon"><ion-icon name="lock-closed-sharp"></ion-icon></span>
-          <input type="password" name="password" required />
-          <label>Contraseña</label>
-        </div>
-        <div className="remember-forgot">
-          <label><input type="checkbox" />Recuérdame</label>
-          <a href="#">¿Olvidó contraseña?</a>
-        </div>
-        <button type="submit" className="btn">Login</button>
-        <div className="login-register">
-          <p>¿No tienes cuenta?<a href="#" className="register-link">Registrarme</a></p>
-        </div>
-      </form>
-    </div>
-
-      <div className="form-box register">
-        <h2>Registro</h2>
-        <form action="http://localhost:8000/registro_usuario_be.php" method="post">
-          <div className="input-box">
-            <span className="icon"><ion-icon name="person-circle-sharp"></ion-icon></span>
-            <input type="text" name="username" required />
-            <label>Usuario</label>
-          </div>
-          <div className="input-box">
-            <span className="icon"><ion-icon name="mail-sharp"></ion-icon></span>
-            <input type="email" name="email" required />
-            <label>Email</label>
-          </div>
-          <div className="input-box">
-            <span className="icon"><ion-icon name="lock-closed-sharp"></ion-icon></span>
-            <input type="password" name="password" required />
-            <label>Contraseña</label>
-          </div>
-          <div className="remember-forgot">
-            <label><input type="checkbox" />Estoy de acuerdo con los términos y condiciones</label>
-          </div>
-          <button type="submit" className="btn">Register</button>
-          <div className="login-register">
-            <p>¿Ya tienes una cuenta?<a href="#" className="login-link">Login</a></p>
-          </div>
-        </form>
       </div>
-  </div>
 
 
+
+      {/* LOGIN / REGISTER */}
+      <div className="wrapper">
+        <span className="icon-close"><ion-icon name="close-circle-sharp"></ion-icon></span>
+        <div className="form-box login">
+          <h2>Login</h2>
+          <form action="http://localhost:8000/login_usuario_be.php" method="post">
+            <div className="input-box">
+              <span className="icon"><ion-icon name="mail-sharp"></ion-icon></span>
+              <input type="email" name="email" required />
+              <label>Email</label>
+            </div>
+            <div className="input-box">
+              <span className="icon"><ion-icon name="lock-closed-sharp"></ion-icon></span>
+              <input type="password" name="password" required />
+              <label>Contraseña</label>
+            </div>
+            <div className="remember-forgot">
+              <label><input type="checkbox" />Recuérdame</label>
+              <a href="#">¿Olvidó contraseña?</a>
+            </div>
+            <button type="submit" className="btn">Login</button>
+            <div className="login-register">
+              <p>¿No tienes cuenta?<a href="#" className="register-link">Registrarme</a></p>
+            </div>
+          </form>
+        </div>
+
+        <div className="form-box register">
+          <h2>Registro</h2>
+          <form action="http://localhost:8000/registro_usuario_be.php" method="post">
+            <div className="input-box">
+              <span className="icon"><ion-icon name="person-circle-sharp"></ion-icon></span>
+              <input type="text" name="username" required />
+              <label>Usuario</label>
+            </div>
+            <div className="input-box">
+              <span className="icon"><ion-icon name="mail-sharp"></ion-icon></span>
+              <input type="email" name="email" required />
+              <label>Email</label>
+            </div>
+            <div className="input-box">
+              <span className="icon"><ion-icon name="lock-closed-sharp"></ion-icon></span>
+              <input type="password" name="password" required />
+              <label>Contraseña</label>
+            </div>
+            <div className="remember-forgot">
+              <label><input type="checkbox" />Estoy de acuerdo con los términos y condiciones</label>
+            </div>
+            <button type="submit" className="btn">Register</button>
+            <div className="login-register">
+              <p>¿Ya tienes una cuenta?<a href="#" className="login-link">Login</a></p>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      {/* FOOTER */}
       <footer id="footer">
         <div className="footer-content">
           <div className="address-section">
@@ -189,15 +235,11 @@ function App() {
           <p><a href="terminos.html" style={{ color: '#ccc', textDecoration: 'none' }}>Términos y Condiciones</a> | <a href="privacidad.html" style={{ color: '#ccc', textDecoration: 'none' }}>Política de Privacidad</a></p>
         </div>
       </footer>
-
-      {/* Ionicons CDN */}
-
-      <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-      <script noModule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
     </>
   );
 }
 
 export default App;
+
 
 

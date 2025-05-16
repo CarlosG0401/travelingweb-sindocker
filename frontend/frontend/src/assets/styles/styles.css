@@ -489,44 +489,47 @@ header .header-user {
 
 
 .exchange-container {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap; 
-    padding: 20px;
-    background-color: #f9f9f9;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    margin: 20px auto; 
-    overflow: hidden;
-    
-     width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
-    position: relative;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-top: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+  margin-top: 900px;
+  width: 99vw; /* ← Asegura que use el ancho completo de la pantalla */
+  position: relative;
+  z-index: 2;
+  overflow: hidden;
+  box-sizing: border-box; /* ← Asegura que padding no cree scroll */
+  border-left: none;
+  border-right: none;
 }
+
 
 .exchange-item {
-    display: flex;
-    align-items: center;
-    margin: 10px; 
-    flex: 1 1 20%; 
-    max-width: 200px; 
-    text-align: center; 
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+  font-size: 0.95em;
+  font-weight: bold;
+  color: #000;
 }
 
-.flag {
-    width: 30px; 
-    height: auto; 
-    margin-right: 10px; 
+.exchange-item img.flag {
+  width: 50px;
+  height: auto;
+  margin-right: 8px;
 }
 
 .exchange-rate {
-    font-weight: bold; 
+    font-weight: bold;
+    font-size: large; 
 }
 
 .animated-exchange {
     display: flex; 
-    animation: slide-in-out 7s linear infinite; 
+    animation: slide-in-out 25s linear infinite; 
 }
 
 @keyframes slide-in-out {
