@@ -7,13 +7,15 @@
     font-family: 'Oswald', sans-serif;
 }
 
-body {
+html, body {
   margin: 0;
   padding: 0;
   height: 100%;
+  width: 100%;
   background: url('../images/background.jpg') no-repeat center center;
   background-size: cover;
   background-attachment: fixed;
+  overflow-x: hidden;
 }
 
 .user-dropdown {
@@ -161,6 +163,7 @@ header {
     display: flex;
     justify-content: center;
     align-items: center;
+    z-index: 1;
 }
 
 .search-container h2 {
@@ -264,7 +267,7 @@ header {
     align-items: center;
     overflow: hidden;
     transition: transform .5s ease, height .2s ease, top 0.3s ease;
-    z-index: 100;
+    z-index: 9999;
 }
 
 .wrapper.active-popup {
@@ -313,7 +316,7 @@ header {
     justify-content: center;
     align-items: center;
     cursor: pointer;
-    z-index: 1;
+    z-index: 50;
 
 }
 
@@ -499,7 +502,7 @@ header .header-user {
   margin-top: 900px;
   width: 99vw; /* ← Asegura que use el ancho completo de la pantalla */
   position: relative;
-  z-index: 2;
+  z-index: 1;
   overflow: hidden;
   box-sizing: border-box; /* ← Asegura que padding no cree scroll */
   border-left: none;

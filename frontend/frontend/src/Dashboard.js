@@ -1,3 +1,5 @@
+//Copyright (c) 2024 TravelingWeb. All rights reserved.
+
 import './assets/styles/styles.css';
 import React, { useEffect } from 'react';
 import logoImg from './assets/images/imagen-foto-removebg-preview.png';
@@ -11,8 +13,10 @@ import ColombiaImg from './assets/images/colombia.png';
 import BrasilImg from './assets/images/bandera-de-brasil.jpg';
 import ArgentinaImg from './assets/images/argentina.png';
 import PeruImg from './assets/images/peru.png';
+import { useNavigate } from 'react-router-dom';
 
 function Dashboard() {
+  const navigate = useNavigate();
   const getUsername = () => {
   // Intenta primero desde localStorage
   const fromStorage = localStorage.getItem('username');
@@ -48,6 +52,15 @@ const username = getUsername();
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  const handleSearch = async (e) => {
+    e.preventDefault();
+    const form = new FormData(e.target);
+    const data = Object.fromEntries(form.entries());
+
+    localStorage.setItem('busqueda', JSON.stringify(data)); // Guarda datos de búsqueda
+    navigate('/buscar'); // Redirige a BuscarViajes.js
+  };
 
   return (
     <>
@@ -85,7 +98,7 @@ const username = getUsername();
       </div>
 
       <div className="search-container">
-        <form className="search-form" method="post" action="http://localhost/backend/buscar_viajes.php">
+        <form className="search-form" onSubmit={handleSearch}>
           <input type="text" name="origen" placeholder="Lugar de Origen" className="search-input" required />
           <input type="text" name="destino" placeholder="Lugar de Destino" className="search-input" required />
           <input type="date" name="fecha_inicio" className="search-input" required />

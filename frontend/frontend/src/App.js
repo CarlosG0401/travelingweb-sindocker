@@ -1,4 +1,5 @@
-import './assets/styles/styles.css';
+import './assets/styles/styles-app.css';
+
 import React, { useEffect } from 'react';
 
 // Imágenes generales
@@ -18,7 +19,7 @@ import PeruImg from './assets/images/peru.png';
 
 function App() {
   useEffect(() => {
-    const wrapper = document.querySelector('.wrapper');
+    const loginPopup = document.querySelector('.login-popup-container');
     const loginLink = document.querySelector('.login-link');
     const registerLink = document.querySelector('.register-link');
     const btnPopup = document.querySelector('.btnLogin-popup');
@@ -26,25 +27,25 @@ function App() {
 
     if (registerLink) {
       registerLink.addEventListener('click', () => {
-        wrapper?.classList.add('active');
+        loginPopup?.classList.add('active');
       });
     }
 
     if (loginLink) {
       loginLink.addEventListener('click', () => {
-        wrapper?.classList.remove('active');
+        loginPopup?.classList.remove('active');
       });
     }
 
     if (btnPopup) {
       btnPopup.addEventListener('click', () => {
-        wrapper?.classList.add('active-popup');
+        loginPopup?.classList.add('active-popup');
       });
     }
 
     if (iconClose) {
       iconClose.addEventListener('click', () => {
-        wrapper?.classList.remove('active-popup');
+        loginPopup?.classList.remove('active-popup');
       });
     }
 
@@ -57,20 +58,20 @@ function App() {
   }, []);
 
   useEffect(() => {
-    const wrapper = document.querySelector('.wrapper');
+    const loginPopup = document.querySelector('.login-popup-container');
     const footer = document.getElementById('footer');
 
     const handleScroll = () => {
-      if (!wrapper || !footer) return;
+      if (!loginPopup || !footer) return;
 
       const footerTop = footer.getBoundingClientRect().top;
       const viewportHeight = window.innerHeight;
 
       if (footerTop < viewportHeight) {
         const offset = viewportHeight - footerTop + 20;
-        wrapper.style.top = `calc(25% - ${offset}px)`;
+        loginPopup.style.top = `calc(25% - ${offset}px)`;
       } else {
-        wrapper.style.top = '25%';
+        loginPopup.style.top = '25%';
       }
     };
 
@@ -97,9 +98,9 @@ function App() {
         <h1>¡Aquí es dónde empieza tú aventura!</h1>
       </div>
 
-      <div className="search-container">
+      <div className="search-section">
         <form
-          className="search-form"
+          className="form-search-section"
           method="post"
           action="http://localhost/backend/buscar_viajes.php"
         >
@@ -111,47 +112,9 @@ function App() {
         </form>
       </div>
 
-      {/* BLOQUE DE EXCHANGE */}
-      <div className="exchange-container">
-        <div className="animated-exchange">
-          <div className="exchange-item"><img src={unionImg} alt="Euro" className="flag" /><span className="exchange-rate">1 EUR = 850 CLP</span></div>
-          <div className="exchange-item"><img src={unitedImg} alt="USD" className="flag" /><span className="exchange-rate">1 USD = 800 CLP</span></div>
-          <div className="exchange-item"><img src={englandImg} alt="Libra" className="flag" /><span className="exchange-rate">1 GBP = 1.200 CLP</span></div>
-          <div className="exchange-item"><img src={BrasilImg} alt="Real" className="flag" /><span className="exchange-rate">1 BRL = 167 CLP</span></div>
-          <div className="exchange-item"><img src={ArgentinaImg} alt="ARS" className="flag" /><span className="exchange-rate">1 ARS = 0,93 CLP</span></div>
-          <div className="exchange-item"><img src={ColombiaImg} alt="COL" className="flag" /><span className="exchange-rate">1 COL = 0,21 CLP</span></div>
-          <div className="exchange-item"><img src={PeruImg} alt="PEN" className="flag" /><span className="exchange-rate">1 PEN = 241 CLP</span></div>
-          <div className="exchange-item"><img src={unionImg} alt="Euro" className="flag" /><span className="exchange-rate">1 EUR = 850 CLP</span></div>
-          <div className="exchange-item"><img src={unitedImg} alt="USD" className="flag" /><span className="exchange-rate">1 USD = 800 CLP</span></div>
-          <div className="exchange-item"><img src={englandImg} alt="Libra" className="flag" /><span className="exchange-rate">1 GBP = 1.200 CLP</span></div>
-          <div className="exchange-item"><img src={BrasilImg} alt="Real" className="flag" /><span className="exchange-rate">1 BRL = 167 CLP</span></div>
-          <div className="exchange-item"><img src={ArgentinaImg} alt="ARS" className="flag" /><span className="exchange-rate">1 ARS = 0,93 CLP</span></div>
-          <div className="exchange-item"><img src={ColombiaImg} alt="COL" className="flag" /><span className="exchange-rate">1 COL = 0,21 CLP</span></div>
-          <div className="exchange-item"><img src={PeruImg} alt="PEN" className="flag" /><span className="exchange-rate">1 PEN = 241 CLP</span></div>
-          <div className="exchange-item"><img src={unionImg} alt="Euro" className="flag" /><span className="exchange-rate">1 EUR = 850 CLP</span></div>
-          <div className="exchange-item"><img src={unitedImg} alt="USD" className="flag" /><span className="exchange-rate">1 USD = 800 CLP</span></div>
-          <div className="exchange-item"><img src={englandImg} alt="Libra" className="flag" /><span className="exchange-rate">1 GBP = 1.200 CLP</span></div>
-          <div className="exchange-item"><img src={BrasilImg} alt="Real" className="flag" /><span className="exchange-rate">1 BRL = 167 CLP</span></div>
-          <div className="exchange-item"><img src={ArgentinaImg} alt="ARS" className="flag" /><span className="exchange-rate">1 ARS = 0,93 CLP</span></div>
-          <div className="exchange-item"><img src={ColombiaImg} alt="COL" className="flag" /><span className="exchange-rate">1 COL = 0,21 CLP</span></div>
-          <div className="exchange-item"><img src={PeruImg} alt="PEN" className="flag" /><span className="exchange-rate">1 PEN = 241 CLP</span></div>
-          <div className="exchange-item"><img src={unionImg} alt="Euro" className="flag" /><span className="exchange-rate">1 EUR = 850 CLP</span></div>
-          <div className="exchange-item"><img src={unitedImg} alt="USD" className="flag" /><span className="exchange-rate">1 USD = 800 CLP</span></div>
-          <div className="exchange-item"><img src={englandImg} alt="Libra" className="flag" /><span className="exchange-rate">1 GBP = 1.200 CLP</span></div>
-          <div className="exchange-item"><img src={BrasilImg} alt="Real" className="flag" /><span className="exchange-rate">1 BRL = 167 CLP</span></div>
-          <div className="exchange-item"><img src={ArgentinaImg} alt="ARS" className="flag" /><span className="exchange-rate">1 ARS = 0,93 CLP</span></div>
-          <div className="exchange-item"><img src={ColombiaImg} alt="COL" className="flag" /><span className="exchange-rate">1 COL = 0,21 CLP</span></div>
-          <div className="exchange-item"><img src={PeruImg} alt="PEN" className="flag" /><span className="exchange-rate">1 PEN = 241 CLP</span></div>
-          
-        </div>
-      </div>
-
-
-
-      {/* LOGIN / REGISTER */}
-      <div className="wrapper">
+      <div className="login-popup-container">
         <span className="icon-close"><ion-icon name="close-circle-sharp"></ion-icon></span>
-        <div className="form-box login">
+        <div className="form-box-login">
           <h2>Login</h2>
           <form action="http://localhost:8000/login_usuario_be.php" method="post">
             <div className="input-box">
@@ -175,7 +138,7 @@ function App() {
           </form>
         </div>
 
-        <div className="form-box register">
+        <div className="form-box-register">
           <h2>Registro</h2>
           <form action="http://localhost:8000/registro_usuario_be.php" method="post">
             <div className="input-box">
@@ -204,7 +167,18 @@ function App() {
         </div>
       </div>
 
-      {/* FOOTER */}
+      <div className="currency-exchange-strip">
+        <div className="animated-strip">
+          <div className="exchange-item"><img src={unionImg} alt="Euro" className="flag" /><span className="exchange-rate">1 EUR = 850 CLP</span></div>
+          <div className="exchange-item"><img src={unitedImg} alt="USD" className="flag" /><span className="exchange-rate">1 USD = 800 CLP</span></div>
+          <div className="exchange-item"><img src={englandImg} alt="Libra" className="flag" /><span className="exchange-rate">1 GBP = 1.200 CLP</span></div>
+          <div className="exchange-item"><img src={BrasilImg} alt="Real" className="flag" /><span className="exchange-rate">1 BRL = 167 CLP</span></div>
+          <div className="exchange-item"><img src={ArgentinaImg} alt="ARS" className="flag" /><span className="exchange-rate">1 ARS = 0,93 CLP</span></div>
+          <div className="exchange-item"><img src={ColombiaImg} alt="COL" className="flag" /><span className="exchange-rate">1 COL = 0,21 CLP</span></div>
+          <div className="exchange-item"><img src={PeruImg} alt="PEN" className="flag" /><span className="exchange-rate">1 PEN = 241 CLP</span></div>
+        </div>
+      </div>
+
       <footer id="footer">
         <div className="footer-content">
           <div className="address-section">
@@ -229,7 +203,7 @@ function App() {
         </div>
         <div className="footer-bottom">
           <p>&copy; TravelingWeb. Todos los derechos reservados.</p>
-          <p style={{ marginTop: '10px' }}>"Comprometidos con la calidad y el servicio desde 2024."</p>
+          <p style={{ marginTop: '10px' }}>&quot;Comprometidos con la calidad y el servicio desde 2024.&quot;</p>
           <p>Contacto: <a href="mailto:info@travelingweb.com" style={{ color: '#ccc' }}>info@travelingweb.com</a> | Teléfono: +22 444 663</p>
           <p><a href="faq.html" style={{ color: '#ccc', textDecoration: 'none' }}>Preguntas Frecuentes</a> | <a href="soporte.html" style={{ color: '#ccc', textDecoration: 'none' }}>Soporte Técnico</a></p>
           <p><a href="terminos.html" style={{ color: '#ccc', textDecoration: 'none' }}>Términos y Condiciones</a> | <a href="privacidad.html" style={{ color: '#ccc', textDecoration: 'none' }}>Política de Privacidad</a></p>
@@ -240,6 +214,7 @@ function App() {
 }
 
 export default App;
+
 
 
 

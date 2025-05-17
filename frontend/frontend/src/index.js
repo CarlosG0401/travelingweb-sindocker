@@ -1,8 +1,11 @@
-import React from 'react';
+// Copyright (c) 2024 [Your Name or Organization]. All rights reserved.
+
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import App from './App';
 import Dashboard from './Dashboard';
+import BuscarViajes from './BuscarViajes';
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -10,6 +13,8 @@ root.render(
     <Routes>
       <Route path="/" element={<App />} />
       <Route path="/dashboard" element={<Dashboard />} />
+      <Route path="/buscar" element={<BuscarViajes />} />
+      
     </Routes>
   </BrowserRouter>
 );
