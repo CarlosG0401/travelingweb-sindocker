@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import './assets/styles/buscar_viajes_styles.css'
 import logoImg from './assets/images/imagen-foto-removebg-preview.png';
+import { useNavigate } from 'react-router-dom';
 
 function BuscarViajes() {
   const [viajes, setViajes] = useState([]);
-
+  const navigate = useNavigate();
   useEffect(() => {
   const storedData = JSON.parse(localStorage.getItem('busqueda'));
   if (!storedData) return;
@@ -68,11 +69,12 @@ function BuscarViajes() {
                   <td>{v.dias}</td>
                   <td>
                     <button
-                      onClick={() => alert(`Aerolíneas para ${v.origen} - ${v.destino}`)}
+                      onClick={() => navigate(`/aerolineas/${v.id}`)} // <-- Redirige al detalle
                       className="search-btn"
                     >
                       Ver Aerolíneas
                     </button>
+
                   </td>
                 </tr>
               ))}

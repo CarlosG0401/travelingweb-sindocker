@@ -176,6 +176,20 @@ function App() {
           <div className="exchange-item"><img src={ArgentinaImg} alt="ARS" className="flag" /><span className="exchange-rate">1 ARS = 0,93 CLP</span></div>
           <div className="exchange-item"><img src={ColombiaImg} alt="COL" className="flag" /><span className="exchange-rate">1 COL = 0,21 CLP</span></div>
           <div className="exchange-item"><img src={PeruImg} alt="PEN" className="flag" /><span className="exchange-rate">1 PEN = 241 CLP</span></div>
+          <div className="exchange-item"><img src={unionImg} alt="Euro" className="flag" /><span className="exchange-rate">1 EUR = 850 CLP</span></div>
+          <div className="exchange-item"><img src={unitedImg} alt="USD" className="flag" /><span className="exchange-rate">1 USD = 800 CLP</span></div>
+          <div className="exchange-item"><img src={englandImg} alt="Libra" className="flag" /><span className="exchange-rate">1 GBP = 1.200 CLP</span></div>
+          <div className="exchange-item"><img src={BrasilImg} alt="Real" className="flag" /><span className="exchange-rate">1 BRL = 167 CLP</span></div>
+          <div className="exchange-item"><img src={ArgentinaImg} alt="ARS" className="flag" /><span className="exchange-rate">1 ARS = 0,93 CLP</span></div>
+          <div className="exchange-item"><img src={ColombiaImg} alt="COL" className="flag" /><span className="exchange-rate">1 COL = 0,21 CLP</span></div>
+          <div className="exchange-item"><img src={PeruImg} alt="PEN" className="flag" /><span className="exchange-rate">1 PEN = 241 CLP</span></div>
+          <div className="exchange-item"><img src={unionImg} alt="Euro" className="flag" /><span className="exchange-rate">1 EUR = 850 CLP</span></div>
+          <div className="exchange-item"><img src={unitedImg} alt="USD" className="flag" /><span className="exchange-rate">1 USD = 800 CLP</span></div>
+          <div className="exchange-item"><img src={englandImg} alt="Libra" className="flag" /><span className="exchange-rate">1 GBP = 1.200 CLP</span></div>
+          <div className="exchange-item"><img src={BrasilImg} alt="Real" className="flag" /><span className="exchange-rate">1 BRL = 167 CLP</span></div>
+          <div className="exchange-item"><img src={ArgentinaImg} alt="ARS" className="flag" /><span className="exchange-rate">1 ARS = 0,93 CLP</span></div>
+          <div className="exchange-item"><img src={ColombiaImg} alt="COL" className="flag" /><span className="exchange-rate">1 COL = 0,21 CLP</span></div>
+          <div className="exchange-item"><img src={PeruImg} alt="PEN" className="flag" /><span className="exchange-rate">1 PEN = 241 CLP</span></div>
         </div>
       </div>
 
