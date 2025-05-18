@@ -14,7 +14,7 @@ if (!isset($_GET['viaje_id'])) {
 
 $viaje_id = intval($_GET['viaje_id']); // Sanitize
 
-$sql = "SELECT nombre, tipo_vuelo, hora_salida, hora_llegada, logo_nombre FROM aerolineas WHERE viaje_id = ?";
+$sql = "SELECT id, nombre, tipo_vuelo, hora_salida, hora_llegada, logo_nombre FROM aerolineas WHERE viaje_id = ?";
 $stmt = $conexion->prepare($sql);
 $stmt->bind_param("i", $viaje_id);
 $stmt->execute();

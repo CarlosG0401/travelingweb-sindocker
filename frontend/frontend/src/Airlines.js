@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import './assets/styles/styles-app-air.css';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 
 function Airlines() {
   const { viajeId } = useParams();
   const [aerolineas, setAerolineas] = useState([]);
   const [cantidad, setCantidad] = useState({}); // guarda cantidad por fila
-
+  const navigate = useNavigate();
   useEffect(() => {
     fetch(`http://localhost:8000/obtener_aerolineas.php?viaje_id=${viajeId}`)
       .then(res => res.json())
@@ -20,8 +20,9 @@ function Airlines() {
 
   const handleReserva = (index) => {
     const pasajes = cantidad[index] || 1;
-    alert(`Reservaste ${pasajes} pasaje(s) con ${aerolineas[index].nombre}`);
-  };
+  const idAero = aerolineas[index].id; // Asegúrate de que el backend retorne también el ID
+  navigate(`/detalle-precio/${idAero}?pasajes=${pasajes}`);
+};
 
   return (
     <div className="center-text">
@@ -36,7 +37,7 @@ function Airlines() {
               <th>Tipo de vuelo</th>
               <th>Hora de salida</th>
               <th>Hora de llegada</th>
-              <th>Opción</th>
+              <th>Cantidad</th>
               <th>Acción</th>
             </tr>
           </thead>
