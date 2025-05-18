@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import { useParams, useLocation } from 'react-router-dom';
+import { useParams, useLocation, useNavigate } from 'react-router-dom';
 import './assets/styles/precios_styles.css';
 
 function ObtenerPrecio() {
   const { aerolineaId } = useParams();
   const [precios, setPrecios] = useState([]);
   const location = useLocation();
+  const navigate = useNavigate();
   const query = new URLSearchParams(location.search);
   const pasajes = query.get('pasajes') || 1;
 
@@ -21,7 +22,8 @@ function ObtenerPrecio() {
   };
 
   const handleSiguiente = () => {
-    alert(`Has seleccionado ${pasajes} pasaje(s) para aerolínea ${aerolineaId}`);
+    // redirige a la nueva ruta
+    navigate('/formulario-cliente');
   };
 
   return (

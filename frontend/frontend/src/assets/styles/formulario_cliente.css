@@ -1,0 +1,75 @@
+.formulario-cliente-container {
+  background: url('../images/Apt.-SCL-Nombre-Aeropuerto-Nuevo-Pudahuel.jpg') no-repeat center center fixed;
+  background-size: cover;
+  min-height: 100vh;
+  width: 1000vh;
+  padding: 50px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.formulario-cliente-container h1 {
+  font-size: 2.5em;
+  color: white;
+  margin-bottom: 30px;
+  text-align: center;
+  font-weight: bold;
+}
+
+/* Nuevo grid horizontal */
+.formulario-cliente-grid {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 40px;
+  flex-wrap: wrap; /* para que en pantallas pequeñas se acomode */
+}
+
+.formulario-cliente-box {
+  background-color: rgba(255, 255, 255, 0.92);
+  padding: 30px;
+  border-radius: 15px;
+  width: 500px;
+  height: 700px;              /* Fijo */
+  max-height: 700px;
+  overflow-y: auto;           /* Scroll interno si se necesita */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.25);
+  display: flex;
+  flex-direction: column;
+}
+
+
+.formulario-cliente-box h2 {
+  font-size: 1.6em;
+  color: #000;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+.formulario-cliente-box input,
+.formulario-cliente-box select {
+  width: 100%;
+  padding: 10px 15px;
+  margin-bottom: 15px;
+  border: 1px solid #999;
+  border-radius: 8px;
+  font-size: 1em;
+}
+
+.boton-enviar {
+  margin-top: 40px;
+  padding: 14px 28px;
+  font-size: 1.1em;
+  background-color: #0056b3;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.boton-enviar:hover {
+  background-color: #003f7f;
+}
+

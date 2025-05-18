@@ -7,6 +7,8 @@ import Dashboard from './Dashboard';
 import BuscarViajes from './BuscarViajes';
 import Airlines from './Airlines';
 import ObtenerPrecio from './ObtenerPrecio';
+import FormularioCliente from './FormularioCliente';
+
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -18,6 +20,7 @@ root.render(
       <Route path="/buscar" element={<BuscarViajes />} />
       <Route path="/aerolineas/:viajeId" element={<Airlines />} />
       <Route path="/detalle-precio/:aerolineaId" element={<ObtenerPrecio />} />
+      <Route path="/formulario-cliente" element={<FormularioCliente />} />
     </Routes>
   </BrowserRouter>
 );
