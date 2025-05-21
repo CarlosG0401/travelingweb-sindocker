@@ -5,7 +5,7 @@ function SeleccionAsientos() {
   const [asientoSeleccionado, setAsientoSeleccionado] = useState(null);
 
   const filas = 20;
-  const columnas = ['A', 'B', 'C', '', 'D', 'E', 'F']; // '' representa el pasillo
+  const columnas = ['A', 'B', 'C', '', 'D', 'E', 'F']; 
   const asientos = [];
 
   for (let i = 1; i <= filas; i++) {

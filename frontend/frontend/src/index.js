@@ -1,4 +1,4 @@
-// Copyright (c) 2024 [Your Name or Organization]. All rights reserved.
+// Copyright (c) 2025 TravelingWeb. All rights reserved.
 
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';

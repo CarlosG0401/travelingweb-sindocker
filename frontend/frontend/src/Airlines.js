@@ -5,7 +5,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 function Airlines() {
   const { viajeId } = useParams();
   const [aerolineas, setAerolineas] = useState([]);
-  const [cantidad, setCantidad] = useState({}); // guarda cantidad por fila
+  const [cantidad, setCantidad] = useState({}); 
   const navigate = useNavigate();
   useEffect(() => {
     fetch(`http://localhost:8000/obtener_aerolineas.php?viaje_id=${viajeId}`)
@@ -20,7 +20,7 @@ function Airlines() {
 
   const handleReserva = (index) => {
     const pasajes = cantidad[index] || 1;
-  const idAero = aerolineas[index].id; // Asegúrate de que el backend retorne también el ID
+  const idAero = aerolineas[index].id; 
   navigate(`/detalle-precio/${idAero}?pasajes=${pasajes}`);
 };
 
@@ -46,7 +46,7 @@ function Airlines() {
               <tr key={i}>
                 <td>
                   <img
-                    src={`/${a.logo_nombre}`} // ← viene directo desde la DB
+                    src={`/${a.logo_nombre}`} 
                     alt={a.nombre}
                     style={{ width: '40px', height: '50px' }}
                   />

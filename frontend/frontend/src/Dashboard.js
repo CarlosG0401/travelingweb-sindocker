@@ -18,11 +18,11 @@ import { useNavigate } from 'react-router-dom';
 function Dashboard() {
   const navigate = useNavigate();
   const getUsername = () => {
-  // Intenta primero desde localStorage
+ 
   const fromStorage = localStorage.getItem('username');
   if (fromStorage) return fromStorage;
 
-  // Si no existe, busca en las cookies
+  
   const match = document.cookie.match(/(?:^|;\s*)username=([^;]+)/);
   return match ? decodeURIComponent(match[1]) : null;
 };
@@ -58,8 +58,8 @@ const username = getUsername();
     const form = new FormData(e.target);
     const data = Object.fromEntries(form.entries());
 
-    localStorage.setItem('busqueda', JSON.stringify(data)); // Guarda datos de búsqueda
-    navigate('/buscar'); // Redirige a BuscarViajes.js
+    localStorage.setItem('busqueda', JSON.stringify(data)); 
+    navigate('/buscar'); 
   };
 
   return (

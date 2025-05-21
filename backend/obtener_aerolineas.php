@@ -5,14 +5,14 @@ header("Access-Control-Allow-Methods: GET, POST");
 header("Content-Type: application/json");
 
 session_start();
-include 'conexion_db.php'; // <-- Esta debe definir $conexion
+include 'conexion_db.php'; 
 
 if (!isset($_GET['viaje_id'])) {
     echo json_encode(["error" => "Falta el parámetro 'viaje_id'"]);
     exit;
 }
 
-$viaje_id = intval($_GET['viaje_id']); // Sanitize
+$viaje_id = intval($_GET['viaje_id']); 
 
 $sql = "SELECT id, nombre, tipo_vuelo, hora_salida, hora_llegada, logo_nombre FROM aerolineas WHERE viaje_id = ?";
 $stmt = $conexion->prepare($sql);

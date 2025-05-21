@@ -12,7 +12,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
 
 include 'conexion_db.php';
 
-// ✅ Recuperar el ID del usuario desde la cookie (ya no desde $_SESSION)
+
 $usuario_id = $_COOKIE['usuario_id'] ?? null;
 
 if (!$usuario_id) {
@@ -20,15 +20,15 @@ if (!$usuario_id) {
     exit();
 }
 
-// Función para convertir fecha vacía en null
+
 function toNullable($fecha) {
     return empty($fecha) ? null : $fecha;
 }
 
-// Obtener datos del cuerpo del POST
+
 $data = json_decode(file_get_contents("php://input"), true);
 
-// Asignar variables desde el frontend
+
 $nombres = $data['nombres'] ?? '';
 $apellidos = $data['apellidos'] ?? '';
 $fecha_nacimiento = toNullable($data['fecha_nacimiento'] ?? '');
@@ -48,7 +48,7 @@ $visa_waiver_fecha_expiracion = toNullable($data['visa_waiver_fecha_expiracion']
 $requiere_pasaporte = $data['requiere_pasaporte'] ?? '';
 $consejos_viaje = $data['consejos_viaje'] ?? '';
 
-// Preparar la consulta SQL
+
 $sql = "INSERT INTO datos_cliente (
     usuario_id, nombres, apellidos, fecha_nacimiento, correo, telefono, nacionalidad_tipo, tiene_rut,
     rut_numero, rut_fecha_emision, rut_fecha_expiracion,
@@ -64,7 +64,7 @@ if (!$stmt) {
     exit();
 }
 
-// Bind de todos los parámetros (como string por simplicidad)
+
 $stmt->bind_param(
     "issssssssssssssssss",
     $usuario_id,
@@ -88,7 +88,7 @@ $stmt->bind_param(
     $consejos_viaje
 );
 
-// Ejecutar
+
 if ($stmt->execute()) {
     echo json_encode(["status" => "success", "message" => "Datos guardados correctamente."]);
 } else {

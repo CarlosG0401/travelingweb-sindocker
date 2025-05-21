@@ -6,16 +6,16 @@ $email = $_POST['email'];
 $password = $_POST['password'];
 $password = hash('sha512', $password);
 
-// Verifica credenciales
+
 $validar_login = mysqli_query($conexion, "SELECT * FROM users WHERE email='$email' AND password='$password'");
 
 if (mysqli_num_rows($validar_login) > 0) {
     $usuario = mysqli_fetch_assoc($validar_login);
     $_SESSION['user'] = $usuario['username'];
 
-    // ✅ Agregamos también el ID del usuario en cookies
+    
     setcookie("username", $usuario['username'], time() + 3600, "/", "localhost", false, false);
-    setcookie("usuario_id", $usuario['id'], time() + 3600, "/", "localhost", false, false); // ← esta es clave
+    setcookie("usuario_id", $usuario['id'], time() + 3600, "/", "localhost", false, false); 
 
     // Redirigir a React
     echo '

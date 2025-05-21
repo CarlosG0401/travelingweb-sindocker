@@ -343,7 +343,7 @@ function FormularioCliente() {
             const response = await fetch('http://localhost:8000/guardar_cliente.php', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                credentials: 'include', // ✅ Esto permite enviar cookies
+                credentials: 'include', 
                 body: JSON.stringify(data),
             });
 

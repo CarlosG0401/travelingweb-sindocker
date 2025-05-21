@@ -7,19 +7,19 @@ header("Content-Type: application/json");
 session_start();
 include 'conexion_db.php';
 
-// Obtener los valores del formulario
+
 $origen = $_POST['origen'] ?? '';
 $destino = $_POST['destino'] ?? '';
 $fecha_inicio = $_POST['fecha_inicio'] ?? '';
 $fecha_fin = $_POST['fecha_fin'] ?? '';
 
-// Validación básica
+
 if (empty($origen) || empty($destino) || empty($fecha_inicio) || empty($fecha_fin)) {
     echo json_encode(["error" => "Todos los campos son requeridos."]);
     exit;
 }
 
-// Consulta actualizada basada en las nuevas columnas
+
 $query = "
     SELECT id, origen, destino, fecha_inicio, fecha_fin, dias
     FROM viajes

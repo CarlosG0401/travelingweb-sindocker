@@ -21,7 +21,7 @@ function BuscarViajes() {
   })
     .then(res => res.json())
     .then(result => {
-      console.log("Resultado de búsqueda:", result); // 👈 Aquí ves lo que llega del backend
+      console.log("Resultado de búsqueda:", result); 
       setViajes(result);
     })
     .catch(() => alert('Error al buscar viajes'));
@@ -69,7 +69,7 @@ function BuscarViajes() {
                   <td>{v.dias}</td>
                   <td>
                     <button
-                      onClick={() => navigate(`/aerolineas/${v.id}`)} // <-- Redirige al detalle
+                      onClick={() => navigate(`/aerolineas/${v.id}`)}
                       className="search-btn"
                     >
                       Ver Aerolíneas
