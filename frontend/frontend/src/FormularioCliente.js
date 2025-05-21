@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
 import './assets/styles/formulario_cliente.css';
+import { useNavigate } from 'react-router-dom';
+
 
 function FormularioCliente() {
+   const navigate = useNavigate();
   const [nacionalidad, setNacionalidad] = useState('Chileno');
   const [tieneRut, setTieneRut] = useState('Sí');
   const [requierePasaporte, setRequierePasaporte] = useState('No');
@@ -311,7 +314,51 @@ function FormularioCliente() {
         </div>
       </div>
 
-      <button type="submit" className="boton-enviar">Enviar</button>
+      <button
+        type="button"
+        className="boton-enviar"
+        onClick={async () => {
+            const data = {
+            nombres: document.querySelector('input[placeholder="Nombres"]').value,
+            apellidos: document.querySelector('input[placeholder="Apellidos"]').value,
+            fecha_nacimiento: document.querySelector('input[placeholder="Fecha de Nacimiento"]').value,
+            correo: document.querySelector('input[placeholder="Correo Electrónico"]').value,
+            telefono: document.querySelector('input[placeholder="Número de Teléfono"]').value,
+            nacionalidad: nacionalidad,
+            tiene_rut: tieneRut,
+            rut_numero: document.querySelector('input[placeholder="Nº RUT"]')?.value || '',
+            rut_fecha_emision: document.querySelectorAll('input[type="date"]')[1]?.value || '',
+            rut_fecha_expiracion: document.querySelectorAll('input[type="date"]')[2]?.value || '',
+            requiere_pasaporte: requierePasaporte,
+            pasaporte_numero: document.querySelector('input[placeholder="Nº Pasaporte"]')?.value || '',
+            pasaporte_fecha_emision: document.querySelectorAll('input[type="date"]')[3]?.value || '',
+            pasaporte_fecha_expiracion: document.querySelectorAll('input[type="date"]')[4]?.value || '',
+            visa_waiver_numero: document.querySelector('input[placeholder="Nº Visa Waiver (si aplica)"]')?.value || '',
+            visa_waiver_fecha_emision: document.querySelectorAll('input[type="date"]')[5]?.value || '',
+            visa_waiver_fecha_expiracion: document.querySelectorAll('input[type="date"]')[6]?.value || '',
+            consejos_viaje: document.querySelectorAll('select')[document.querySelectorAll('select').length - 1]?.value || ''
+            };
+
+           try {
+            const response = await fetch('http://localhost:8000/guardar_cliente.php', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                credentials: 'include', // ✅ Esto permite enviar cookies
+                body: JSON.stringify(data),
+            });
+
+            const result = await response.json();
+            alert(result.message);
+            if (result.status === "success") {
+            navigate("/seleccion-asientos");
+            }
+            } catch (error) {
+            alert("Error al guardar datos");
+            }
+        }}
+        >
+        Enviar
+        </button>
     </div>
   );
 }

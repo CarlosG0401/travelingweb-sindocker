@@ -13,10 +13,11 @@ if (mysqli_num_rows($validar_login) > 0) {
     $usuario = mysqli_fetch_assoc($validar_login);
     $_SESSION['user'] = $usuario['username'];
 
-    // Crear cookie válida por 1 hora (puedes ajustar el tiempo)
-    setcookie("username", $usuario['username'], time() + 3600, "/");
+    // ✅ Agregamos también el ID del usuario en cookies
+    setcookie("username", $usuario['username'], time() + 3600, "/", "localhost", false, false);
+    setcookie("usuario_id", $usuario['id'], time() + 3600, "/", "localhost", false, false); // ← esta es clave
 
-    // Redirigir a la app de React
+    // Redirigir a React
     echo '
     <script>
         window.location = "http://localhost:3000/dashboard";
@@ -33,3 +34,4 @@ if (mysqli_num_rows($validar_login) > 0) {
     exit;
 }
 ?>
+

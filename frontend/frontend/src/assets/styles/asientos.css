@@ -1,0 +1,65 @@
+.cabina-avion {
+   /* opcional */
+  background-size: cover;
+  background-position: center;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;  /* importante: alinea arriba */
+  padding-top: 810px; /* 🔽 ajusta este valor según lo que necesites */
+}
+
+
+.cabina {
+  background-color: rgba(0, 0, 0, 0.7);
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.3);
+  color: white;
+  text-align: center;
+}
+
+.asientos-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 20px;
+}
+
+.fila {
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+}
+
+.asiento {
+  width: 45px;
+  height: 45px;
+  background-color: #333;
+  color: #fff;
+  border: 1px solid #666;
+  border-radius: 8px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.asiento:hover {
+  background-color: #666;
+}
+
+.asiento.seleccionado {
+  background-color: #2ecc71;
+  color: black;
+}
+
+.pasillo {
+  width: 25px;
+  height: 45px;
+}
+
+.asiento-info {
+  margin-top: 20px;
+  font-size: 18px;
+  color: #f4f4f4;
+}
