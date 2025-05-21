@@ -81,18 +81,21 @@ function App() {
 
   return (
     <>
-      <header>
-        <h2 className="logo">
-          <img src={logoImg} alt="Logo" className="logo-img" />
-        </h2>
-        <nav className="navigation">
+    <header>
+        <div class="logo-container">
+          <h2 class="logo">
+            <img src={logoImg} alt="Logo" class="logo-img" />
+            TravelingWeb
+          </h2>
+        </div>
+        <nav class="navigation">
           <a href="#">Home</a>
           <a href="#">Service</a>
           <a href="#">Nosotros</a>
           <a href="#">Contacto</a>
-          <button className="btnLogin-popup">Login</button>
+          <button class="btnLogin-popup">Login</button>
         </nav>
-      </header>
+    </header>
 
       <div className="center-text">
         <h1>¡Aquí es dónde empieza tú aventura!</h1>
