@@ -9,7 +9,7 @@ import Airlines from './Airlines';
 import ObtenerPrecio from './ObtenerPrecio';
 import FormularioCliente from './FormularioCliente';
 import SeleccionAsientos from './SeleccionAsientos';
-
+import AdminCRUDVuelos from './AdminCRUDVuelos';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -22,6 +22,7 @@ root.render(
       <Route path="/detalle-precio/:aerolineaId" element={<ObtenerPrecio />} />
       <Route path="/formulario-cliente" element={<FormularioCliente />} />
       <Route path="/seleccion-asientos" element={<SeleccionAsientos />} />
+      <Route path="/admin/crud-vuelos" element={<AdminCRUDVuelos />} />
     </Routes>
   </BrowserRouter>
 );
