@@ -12,6 +12,7 @@ import SeleccionAsientos from './SeleccionAsientos';
 import AdminCRUDVuelos from './AdminCRUDVuelos';
 import AdminReportes from './AdminReportes';
 import DetalleReserva from './DetalleReserva';
+import LoginAdmin from './AdminLogin';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -27,6 +28,7 @@ root.render(
       <Route path="/admin/crud-vuelos" element={<AdminCRUDVuelos />} />
       <Route path="/admin/reportes" element={<AdminReportes />} />
       <Route path="/detalle-reserva" element={<DetalleReserva />} />
+      <Route path="/admin/login" element={<LoginAdmin />} />
     </Routes>
   </BrowserRouter>
 );
