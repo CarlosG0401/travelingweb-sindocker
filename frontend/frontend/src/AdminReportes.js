@@ -46,7 +46,7 @@ const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042"];
 export default function AdminReportesReservas() {
   return (
     <div className="admin-reports-wrapper">
-      <h2 className="admin-title">Reportes de Reservas</h2>
+      <h2 className="reports-title">Reportes de Ventas</h2>
       <div className="reports-container">
         <div className="stats-cards">
           <div className="card">
