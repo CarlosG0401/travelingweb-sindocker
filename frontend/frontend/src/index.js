@@ -10,6 +10,7 @@ import ObtenerPrecio from './ObtenerPrecio';
 import FormularioCliente from './FormularioCliente';
 import SeleccionAsientos from './SeleccionAsientos';
 import AdminCRUDVuelos from './AdminCRUDVuelos';
+import AdminReportes from './AdminReportes';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -23,6 +24,7 @@ root.render(
       <Route path="/formulario-cliente" element={<FormularioCliente />} />
       <Route path="/seleccion-asientos" element={<SeleccionAsientos />} />
       <Route path="/admin/crud-vuelos" element={<AdminCRUDVuelos />} />
+      <Route path="/admin/reportes" element={<AdminReportes />} />
     </Routes>
   </BrowserRouter>
 );
