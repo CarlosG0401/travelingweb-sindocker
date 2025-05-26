@@ -1,6 +1,10 @@
+//En esta pestaña el administrador puede agregar, editar y eliminar vuelos.
+
+//Importamos las librerías y estilos necesarios.
 import "./assets/styles/AdminCRUDVuelos.css";
 import React, { useState } from "react";
 
+// Componente AdminCRUDVuelos
 const AdminCRUDVuelos = () => {
   // Datos de ejemplo -- ELIMINAR CUANDO SE CONECTE AL BACKEND
 

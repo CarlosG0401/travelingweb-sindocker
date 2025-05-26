@@ -1,12 +1,17 @@
+//En esta pestaña se obtienen las aerolíneas disponibles para un viaje específico.
+// Importamos las librerías y estilos necesarios.
+
 import React, { useEffect, useState } from 'react';
 import './assets/styles/styles-app-air.css';
 import { useParams, useNavigate } from 'react-router-dom';
 
+//Función principal del componente Airlines.
 function Airlines() {
   const { viajeId } = useParams();
   const [aerolineas, setAerolineas] = useState([]);
   const [cantidad, setCantidad] = useState({}); 
   const navigate = useNavigate();
+  // Efecto para obtener las aerolíneas disponibles al cargar el componente.
   useEffect(() => {
     fetch(`http://localhost:8000/obtener_aerolineas.php?viaje_id=${viajeId}`)
       .then(res => res.json())

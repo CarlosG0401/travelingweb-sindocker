@@ -1,3 +1,6 @@
+//En esta pestaña el administrador puede ver el detalle de reportes de reservas y ventas.
+
+//Importamos las librerías y estilos necesarios.
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, PieChart, Pie, Cell } from "recharts";
 import "./assets/styles/AdminReportes.css";
 // Datos de PRUEBA

@@ -1,12 +1,18 @@
+//En esta pestaña se pueden buscar viajes disponibles según los criterios ingresados por el usuario.
+//Importamos las librerías y estilos necesarios de uso general, así como la imagen del logo y el hook useNavigate para la navegación entre rutas, el useState y useEffect para manejar el estado y los efectos secundarios del componente.
 import React, { useState, useEffect } from 'react';
 import './assets/styles/buscar_viajes_styles.css'
 import logoImg from './assets/images/imagen-foto-removebg-preview.png';
 import { useNavigate } from 'react-router-dom';
 
+//Función principal del componente BuscarViajes.
+
 function BuscarViajes() {
   const [viajes, setViajes] = useState([]);
   const navigate = useNavigate();
   useEffect(() => {
+    // Recuperamos los datos de búsqueda del localStorage.
+  // Si no hay datos, no hacemos nada.
   const storedData = JSON.parse(localStorage.getItem('busqueda'));
   if (!storedData) return;
 

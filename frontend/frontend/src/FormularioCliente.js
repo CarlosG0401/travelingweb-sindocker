@@ -1,3 +1,5 @@
+//En esta pestaña el usuario cliente puede completar formulario de datos personales y documentación necesaria para la compra de un viaje y validación de requisitos.
+
 import React, { useState } from 'react';
 import './assets/styles/formulario_cliente.css';
 import { useNavigate } from 'react-router-dom';

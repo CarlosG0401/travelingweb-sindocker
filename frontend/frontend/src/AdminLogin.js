@@ -1,7 +1,10 @@
+//En esta pestaña el administrador puede loguearse para acceder a las funcionalidades de administración.
+//Importamos las librerías y estilos necesarios.
 import { useState } from "react";
 import "./assets/styles/AdminLogin.css";
 import { useNavigate } from "react-router-dom";
 
+// Componente LoginAdmin.
 export default function LoginAdmin() {
   const [formData, setFormData] = useState({ username: "", password: "" });
   const navigate = useNavigate();

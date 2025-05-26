@@ -1,3 +1,5 @@
+//En esta pestaña el usuario puede ver el precio de los pasajes de una aerolínea específica al consultar tanto de ida como de ida y vuelta.
+
 import React, { useEffect, useState } from 'react';
 import { useParams, useLocation, useNavigate } from 'react-router-dom';
 import './assets/styles/precios_styles.css';

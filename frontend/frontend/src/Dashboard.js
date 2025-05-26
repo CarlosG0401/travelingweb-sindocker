@@ -1,5 +1,7 @@
 //Copyright (c) 2024 TravelingWeb. All rights reserved.
+//En esta pestaña se maneja el Dashboard de la aplicación, misma pestaña que el índice, pero con el usuario logueado y con la posibilidad de buscar viajes.
 
+//Importamos estilos e imágenes necesarias para el Dashboard.
 import './assets/styles/styles.css';
 import React, { useEffect } from 'react';
 import logoImg from './assets/images/imagen-foto-removebg-preview.png';
@@ -15,6 +17,7 @@ import ArgentinaImg from './assets/images/argentina.png';
 import PeruImg from './assets/images/peru.png';
 import { useNavigate } from 'react-router-dom';
 
+// Definimos el componente Dashboard que representa la página principal del usuario logueado.
 function Dashboard() {
   const navigate = useNavigate();
   const getUsername = () => {
@@ -22,14 +25,14 @@ function Dashboard() {
   const fromStorage = localStorage.getItem('username');
   if (fromStorage) return fromStorage;
 
-  
+  // Si no está en localStorage, buscamos en las cookies.
   const match = document.cookie.match(/(?:^|;\s*)username=([^;]+)/);
   return match ? decodeURIComponent(match[1]) : null;
 };
 
 const username = getUsername();
 
-
+//En esta parte del código, se maneja el efecto de scroll para que el contenido se ajuste a la altura del footer.
   useEffect(() => {
     const wrapper = document.querySelector('.wrapper');
     const footer = document.getElementById('footer');
@@ -57,11 +60,11 @@ const username = getUsername();
     e.preventDefault();
     const form = new FormData(e.target);
     const data = Object.fromEntries(form.entries());
-
+// Aquí puedes hacer una llamada a la API para buscar viajes.
     localStorage.setItem('busqueda', JSON.stringify(data)); 
     navigate('/buscar'); 
   };
-
+// Esta función maneja la búsqueda de viajes cuando el usuario envía el formulario.
   return (
     <>
       <header>

@@ -1,3 +1,7 @@
+//Esta pestaña es el índice principal de TravelingWeb, dónde el cliente puede buscar viajes, iniciar sesión y registrarse.
+//// También incluye una barra de navegación, un formulario de búsqueda y un pie de página con información de contacto y redes sociales.
+
+//Importa las imágenes y estilos necesarios
 import './assets/styles/styles-app.css';
 
 import React, { useEffect } from 'react';
@@ -17,6 +21,7 @@ import BrasilImg from './assets/images/bandera-de-brasil.jpg';
 import ArgentinaImg from './assets/images/argentina.png';
 import PeruImg from './assets/images/peru.png';
 
+//Esta función es el componente principal de la aplicación, y que además maneja la lógica de interacción del usuario, como el inicio de sesión y el registro.
 function App() {
   useEffect(() => {
     const loginPopup = document.querySelector('.login-popup-container');
@@ -79,6 +84,7 @@ function App() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+//Renderiza todo el componente de la aplicación, desde el encabezado, formulario de búsqueda, entre otros.
   return (
     <>
     <header>
