@@ -21,3 +21,24 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+/node_modules/
+*.log
+.env
+package-lock.json
+
+# React build
+build/
+
+# Docker volumes and dumps
+db/
+*.sql
+
+# PHP
+*.log
+*.lock
+
+# Editor
+.vscode/
+.DS_Store
+*.swp
