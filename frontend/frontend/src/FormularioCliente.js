@@ -343,20 +343,35 @@ function FormularioCliente() {
 
            try {
             const response = await fetch('http://localhost:8000/guardar_cliente.php', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                credentials: 'include', 
-                body: JSON.stringify(data),
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              credentials: 'include',
+              body: JSON.stringify(data),
             });
 
             const result = await response.json();
-            alert(result.message);
+
+            if (result.status === "validation_error") {
+              navigate('/validacion-documentacion', {
+                state: {
+                  errores: result.errores,
+                  recomendaciones: result.recomendaciones,
+                  nacionalidad: result.nacionalidad
+                }
+              });
+              return;
+            }
+
             if (result.status === "success") {
-            navigate("/seleccion-asientos");
+              alert(result.message);
+              navigate("/seleccion-asientos");
+            } else {
+              alert(result.message || "Ocurrió un error inesperado.");
             }
-            } catch (error) {
-            alert("Error al guardar datos");
-            }
+          } catch (error) {
+            console.error("Error al guardar datos:", error);
+            alert("Error de conexión con el servidor.");
+          }
         }}
         >
         Enviar
