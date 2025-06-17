@@ -66,9 +66,10 @@ function SeleccionAsientos() {
 
       const result = await response.json();
 
-      if (result.status === "success") {
+      if (result.status === "success" && result.reserva_id) {
+        localStorage.setItem('reserva_id', result.reserva_id); // ✅ Guardar ID de la reserva
         alert(result.message || "Reserva realizada correctamente.");
-        navigate('/pago'); // ✅ Redirigir a la pestaña de pago
+        navigate('/pago'); // ✅ Redirigir al formulario de pago
       } else {
         alert(result.message || "Error al procesar la reserva.");
       }

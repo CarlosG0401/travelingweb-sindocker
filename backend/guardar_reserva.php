@@ -75,10 +75,12 @@ $stmt->bind_param(
 );
 
 if ($stmt->execute()) {
-    echo json_encode(["status" => "success", "message" => "Reserva registrada correctamente."]);
+    $reserva_id = $stmt->insert_id;
+    echo json_encode(["status" => "success", "message" => "Reserva registrada correctamente.", "reserva_id" => $reserva_id]);
 } else {
     echo json_encode(["status" => "error", "message" => "Error al guardar la reserva: " . $stmt->error]);
 }
+
 
 $stmt->close();
 $conexion->close();

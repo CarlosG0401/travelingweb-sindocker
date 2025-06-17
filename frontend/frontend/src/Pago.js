@@ -14,12 +14,28 @@ function Pago() {
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = e => {
-    e.preventDefault();
-    console.log("Procesando pago:", formData);
-    alert("¡Pago procesado correctamente!");
-    // Aquí podrías redirigir al home o a una página de confirmación
-  };
+  const handleSubmit = async e => {
+  e.preventDefault();
+
+  const reserva_id = localStorage.getItem('reserva_id'); // ⚠️ debe estar seteado al guardar reserva
+  const payload = { ...formData, reserva_id };
+
+  try {
+    const res = await fetch("http://localhost:8000/guardar_pago.php", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      credentials: "include",
+      body: JSON.stringify(payload)
+    });
+
+    const result = await res.json();
+    alert(result.message);
+  } catch (error) {
+    alert("Error al procesar el pago.");
+    console.error(error);
+  }
+};
+
 
   return (
     <div className="pago-container">
