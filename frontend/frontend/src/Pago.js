@@ -14,27 +14,40 @@ function Pago() {
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = async e => {
+  const handleSubmit = async (e) => {
   e.preventDefault();
+  const reserva_id = localStorage.getItem('reserva_id');
+  if (!reserva_id) return alert("No se encontró el ID de la reserva.");
 
-  const reserva_id = localStorage.getItem('reserva_id'); // ⚠️ debe estar seteado al guardar reserva
-  const payload = { ...formData, reserva_id };
+  const payload = {
+    nombre: formData.nombre,
+    numero_tarjeta: formData.numero_tarjeta,
+    fecha_expiracion: formData.fecha_expiracion,
+    cvv: formData.cvv,
+    reserva_id
+  };
 
   try {
-    const res = await fetch("http://localhost:8000/guardar_pago.php", {
+    const response = await fetch("http://localhost:8000/guardar_pago.php", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      credentials: "include",
       body: JSON.stringify(payload)
     });
 
-    const result = await res.json();
-    alert(result.message);
+    const result = await response.json();
+
+    if (result.status === "success") {
+      alert("¡Pago procesado correctamente!");
+      window.location.href = "/detalle-reserva"; // ✅ Redirigir
+    } else {
+      alert(result.message || "Error al guardar el pago.");
+    }
   } catch (error) {
-    alert("Error al procesar el pago.");
     console.error(error);
+    alert("Error de conexión con el servidor.");
   }
 };
+
 
 
   return (
