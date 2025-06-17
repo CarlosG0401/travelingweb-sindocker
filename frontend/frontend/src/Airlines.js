@@ -11,6 +11,13 @@ function Airlines() {
   const [aerolineas, setAerolineas] = useState([]);
   const [cantidad, setCantidad] = useState({}); 
   const navigate = useNavigate();
+
+  useEffect(() => {
+  if (viajeId) {
+    localStorage.setItem('viaje_id', viajeId);  // ✅ Esto soluciona el problema
+  }
+}, [viajeId]);
+
   // Efecto para obtener las aerolíneas disponibles al cargar el componente.
   useEffect(() => {
     fetch(`http://localhost:8000/obtener_aerolineas.php?viaje_id=${viajeId}`)
@@ -26,6 +33,7 @@ function Airlines() {
   const handleReserva = (index) => {
     const pasajes = cantidad[index] || 1;
   const idAero = aerolineas[index].id; 
+  localStorage.setItem('viaje_id', viajeId);
   navigate(`/detalle-precio/${idAero}?pasajes=${pasajes}`);
 };
 

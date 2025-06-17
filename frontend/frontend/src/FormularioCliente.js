@@ -364,6 +364,7 @@ function FormularioCliente() {
 
             if (result.status === "success") {
               alert(result.message);
+              localStorage.setItem("datos_cliente_id", result.datos_cliente_id);
               navigate("/seleccion-asientos");
             } else {
               alert(result.message || "Ocurrió un error inesperado.");

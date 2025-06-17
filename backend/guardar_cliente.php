@@ -56,7 +56,6 @@ $hoy = date('Y-m-d');
 
 if ($nacionalidad_tipo === 'Chileno') {
     if (strlen($rut_numero) !== 9) $errores[] = "RUT debe ser menor a 9 dígitos o no puede ser mayor a 9 dígitos";
-    
     if ($rut_fecha_expiracion && $rut_fecha_expiracion < $hoy) $errores[] = "RUT está vencido";
 
     $viaje_a_ny = false;
@@ -86,7 +85,6 @@ if ($nacionalidad_tipo === 'Chileno') {
         $errores[] = "Seleccionó que no tiene RUT, por ende, no puede viajar sin documentación";
     } else {
         if (strlen($rut_numero) !== 9) $errores[] = "RUT debe ser menor a 9 dígitos o no puede ser mayor a 9 dígitos";
-        
         if ($rut_fecha_expiracion && $rut_fecha_expiracion < $hoy) $errores[] = "RUT está vencido";
     }
 
@@ -167,12 +165,18 @@ $stmt->bind_param(
 );
 
 if ($stmt->execute()) {
-    echo json_encode(["status" => "success", "message" => "Datos guardados correctamente."]);
+    $datos_cliente_id = $stmt->insert_id; // ✅ NUEVO: obtenemos el ID insertado
+    echo json_encode([
+        "status" => "success",
+        "message" => "Datos guardados correctamente.",
+        "datos_cliente_id" => $datos_cliente_id
+    ]);
 } else {
     echo json_encode(["status" => "error", "message" => "Error al guardar: " . $stmt->error]);
 }
 
 $stmt->close();
 $conexion->close();
+
 
 

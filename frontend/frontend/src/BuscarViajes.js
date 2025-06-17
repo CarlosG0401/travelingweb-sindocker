@@ -74,13 +74,15 @@ function BuscarViajes() {
                   <td>{v.fecha_fin}</td>
                   <td>{v.dias}</td>
                   <td>
-                    <button
-                      onClick={() => navigate(`/aerolineas/${v.id}`)}
-                      className="search-btn"
-                    >
-                      Ver Aerolíneas
-                    </button>
-
+                   <button
+                    onClick={() => {
+                      localStorage.setItem('viaje_id', v.id); // <-- Guardar ID del viaje aquí
+                      navigate(`/aerolineas/${v.id}`);
+                    }}
+                    className="search-btn"
+                  >
+                    Ver Aerolíneas
+                  </button>
                   </td>
                 </tr>
               ))}
