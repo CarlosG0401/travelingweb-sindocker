@@ -27,7 +27,7 @@ root.render(
       <Route path="/detalle-precio/:aerolineaId" element={<ObtenerPrecio />} />
       <Route path="/formulario-cliente" element={<FormularioCliente />} />
       <Route path="/seleccion-asientos" element={<SeleccionAsientos />} />
-      <Route path="/admin/crud-vuelos" element={<AdminCRUDVuelos />} />
+      <Route path="/admin/vuelos" element={<AdminCRUDVuelos />} />
       <Route path="/admin/reportes" element={<AdminReportes />} />
       <Route path="/detalle-reserva" element={<DetalleReserva />} />
       <Route path="/admin/login" element={<LoginAdmin />} />

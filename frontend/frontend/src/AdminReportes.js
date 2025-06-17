@@ -1,9 +1,19 @@
-//En esta pestaña el administrador puede ver el detalle de reportes de reservas y ventas.
+// En esta pestaña el administrador puede ver el detalle de reportes de reservas y ventas.
 
-//Importamos las librerías y estilos necesarios.
-import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, PieChart, Pie, Cell } from "recharts";
+import {
+  BarChart,
+  Bar,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+  Legend,
+  PieChart,
+  Pie,
+  Cell,
+} from "recharts";
 import "./assets/styles/AdminReportes.css";
-// Datos de PRUEBA
+
 const reservas = [
   { id: 1, asientos: "A1,A2", tipo_precio: "Economy", precio_unitario: 100.5, cantidad_reservas: 2, total_pago: 201, aerolinea_id: 1, viaje_id: 1, datos_clientes_id: 1, usuario_id: 1 },
   { id: 2, asientos: "B1", tipo_precio: "Business", precio_unitario: 300, cantidad_reservas: 1, total_pago: 300, aerolinea_id: 2, viaje_id: 2, datos_clientes_id: 2, usuario_id: 2 },
@@ -21,34 +31,53 @@ const viajes = [
   { id: 3, destino: "Tokio" },
 ];
 
-// FIN DE DATOS DE PRUEBA
 const totalCompras = reservas.reduce((acc, r) => acc + r.cantidad_reservas, 0);
-
 const totalVentas = reservas.reduce((acc, r) => acc + r.total_pago, 0).toFixed(2);
 
 const reservasPorDestinoMap = reservas.reduce((acc, r) => {
-  const viaje = viajes.find(v => v.id === r.viaje_id);
+  const viaje = viajes.find((v) => v.id === r.viaje_id);
   if (viaje) {
     acc[viaje.destino] = (acc[viaje.destino] || 0) + r.cantidad_reservas;
   }
   return acc;
 }, {});
 
-const dataReservasPorDestino = Object.entries(reservasPorDestinoMap).map(([destino, cantidad]) => ({ destino, cantidad }));
-
+const dataReservasPorDestino = Object.entries(reservasPorDestinoMap).map(([destino, cantidad]) => ({
+  destino,
+  cantidad,
+}));
 
 const ventasPorTipoPrecioMap = reservas.reduce((acc, r) => {
   acc[r.tipo_precio] = (acc[r.tipo_precio] || 0) + r.total_pago;
   return acc;
 }, {});
 
-const dataVentasPorTipoPrecio = Object.entries(ventasPorTipoPrecioMap).map(([tipo, total]) => ({ tipo, total }));
+const dataVentasPorTipoPrecio = Object.entries(ventasPorTipoPrecioMap).map(([tipo, total]) => ({
+  tipo,
+  total,
+}));
 
 const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042"];
 
 export default function AdminReportesReservas() {
+  const handleLogout = () => {
+    localStorage.removeItem("admin_username");
+    localStorage.removeItem("admin_id");
+    window.location.href = "/admin/login";
+  };
+
   return (
     <div className="admin-reports-wrapper">
+      <header className="admin-header">
+        <h1>Reporte de Ventas</h1>
+        <nav className="admin-nav">
+          <a href="/admin/vuelos" className="nav-link">Vuelos</a>
+          <a href="/admin/reportes" className="nav-link">Reportes</a>
+          <span className="admin-user">👤 {localStorage.getItem("admin_username")}</span>
+          <button className="btn-logout" onClick={handleLogout}>Cerrar Sesión</button>
+        </nav>
+      </header>
+
       <h2 className="reports-title">Reportes de Ventas</h2>
       <div className="reports-container">
         <div className="stats-cards">
@@ -101,3 +130,4 @@ export default function AdminReportesReservas() {
     </div>
   );
 }
+

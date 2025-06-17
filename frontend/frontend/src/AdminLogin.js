@@ -1,28 +1,52 @@
-//En esta pestaña el administrador puede loguearse para acceder a las funcionalidades de administración.
-//Importamos las librerías y estilos necesarios.
 import { useState } from "react";
 import "./assets/styles/AdminLogin.css";
 import { useNavigate } from "react-router-dom";
 
-// Componente LoginAdmin.
 export default function LoginAdmin() {
   const [formData, setFormData] = useState({ username: "", password: "" });
+  const [error, setError] = useState("");
   const navigate = useNavigate();
 
   const handleChange = (e) => {
-    setFormData({...formData, [e.target.name]: e.target.value});
+    setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    navigate("/admin/reportes"); 
+    setError("");
+
+    try {
+      const response = await fetch("http://localhost:8000/login_admin.php", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const result = await response.json();
+
+      if (result.success) {
+        // ✅ Guardamos el nombre del administrador en localStorage
+        localStorage.setItem("admin_username", formData.username);
+
+        // ✅ Redirigimos al panel de reportes
+        navigate("/admin/reportes");
+      } else {
+        setError("Usuario o contraseña incorrectos.");
+      }
+    } catch (err) {
+      setError("Error de conexión con el servidor.");
+    }
   };
 
   return (
     <div className="login-admin-wrapper">
       <form className="login-admin-form" onSubmit={handleSubmit}>
         <h2>Ingreso Administrador</h2>
-        
+
+        {error && <p className="error-msg">{error}</p>}
+
         <label htmlFor="username">Usuario</label>
         <input
           type="text"
@@ -50,3 +74,4 @@ export default function LoginAdmin() {
     </div>
   );
 }
+

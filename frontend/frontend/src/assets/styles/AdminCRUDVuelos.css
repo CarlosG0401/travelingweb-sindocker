@@ -1,6 +1,7 @@
 .admin-container {
   min-height: 100vh;
-  padding: 2rem;
+  min-width: 185vh;
+  padding: 7rem;
   background-color: rgba(0, 70, 200, 0.5);
   color: #fff; 
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
@@ -200,3 +201,20 @@
   color: white;
   font-weight: bold;
 }
+
+.btn-logout {
+  background-color: #e53935;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  margin-left: 10px;
+  transition: background-color 0.2s;
+}
+
+.btn-logout:hover {
+  background-color: #b71c1c;
+}
+
