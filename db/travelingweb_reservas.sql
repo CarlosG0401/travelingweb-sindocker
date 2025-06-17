@@ -43,7 +43,7 @@ CREATE TABLE `reservas` (
   CONSTRAINT `reservas_ibfk_3` FOREIGN KEY (`viaje_id`) REFERENCES `viajes` (`id`),
   CONSTRAINT `reservas_ibfk_4` FOREIGN KEY (`datos_cliente_id`) REFERENCES `datos_cliente` (`id`),
   CONSTRAINT `reservas_chk_1` CHECK ((`tipo_precio` in (_utf8mb4'ida',_utf8mb4'ida_vuelta')))
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -52,6 +52,7 @@ CREATE TABLE `reservas` (
 
 LOCK TABLES `reservas` WRITE;
 /*!40000 ALTER TABLE `reservas` DISABLE KEYS */;
+INSERT INTO `reservas` VALUES (1,1,'18E','ida',280000,1,280000,1,1,7),(2,1,'18E','ida',280000,1,280000,1,1,7),(3,1,'18D','ida',280000,1,280000,1,1,7),(4,1,'18F','ida',280000,1,280000,1,1,8),(5,1,'19B','ida',280000,1,280000,1,1,9);
 /*!40000 ALTER TABLE `reservas` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -64,4 +65,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-06-14 16:37:30
+-- Dump completed on 2025-06-17 16:32:48

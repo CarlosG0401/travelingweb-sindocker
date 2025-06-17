@@ -16,32 +16,34 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `viajes`
+-- Table structure for table `pagos`
 --
 
-DROP TABLE IF EXISTS `viajes`;
+DROP TABLE IF EXISTS `pagos`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `viajes` (
+CREATE TABLE `pagos` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `origen` varchar(250) NOT NULL,
-  `destino` varchar(250) NOT NULL,
-  `fecha_inicio` date DEFAULT NULL,
-  `fecha_fin` date DEFAULT NULL,
-  `dias` int NOT NULL,
-  `fecha` datetime NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  `nombre_titular` varchar(100) NOT NULL,
+  `numero_tarjeta` varchar(20) NOT NULL,
+  `fecha_expiracion` date NOT NULL,
+  `cvv` varchar(4) NOT NULL,
+  `reserva_id` int NOT NULL,
+  `fecha_pago` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  KEY `reserva_id` (`reserva_id`),
+  CONSTRAINT `pagos_ibfk_1` FOREIGN KEY (`reserva_id`) REFERENCES `reservas` (`id`) ON DELETE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `viajes`
+-- Dumping data for table `pagos`
 --
 
-LOCK TABLES `viajes` WRITE;
-/*!40000 ALTER TABLE `viajes` DISABLE KEYS */;
-INSERT INTO `viajes` VALUES (1,'Santiago','Nueva York','2025-07-01','2025-07-08',7,'2025-07-01 08:00:00'),(2,'Santiago','Madrid','2025-07-03','2025-07-13',10,'2025-07-03 09:30:00'),(3,'Santiago','París','2025-07-05','2025-07-19',14,'2025-07-05 12:00:00'),(4,'Santiago','Miami','2025-07-08','2025-07-13',5,'2025-07-08 06:00:00'),(5,'Santiago','Roma','2025-07-10','2025-07-19',9,'2025-07-10 15:00:00'),(6,'Santiago','Barcelona','2025-06-15','2025-06-20',5,'2025-06-15 18:12:00');
-/*!40000 ALTER TABLE `viajes` ENABLE KEYS */;
+LOCK TABLES `pagos` WRITE;
+/*!40000 ALTER TABLE `pagos` DISABLE KEYS */;
+INSERT INTO `pagos` VALUES (1,'Carlos Galindo','234969532','2029-07-01','333',4,'2025-06-17 18:19:49'),(2,'Carlos Galindo','234969234','2029-07-01','000',4,'2025-06-17 18:26:10'),(3,'Jose Alfredo','2323223223','2030-07-01','888',5,'2025-06-17 18:33:05');
+/*!40000 ALTER TABLE `pagos` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -53,4 +55,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-06-17 16:32:48
+-- Dump completed on 2025-06-17 16:32:47
