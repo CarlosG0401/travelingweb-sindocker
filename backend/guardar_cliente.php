@@ -72,9 +72,9 @@ if ($nacionalidad_tipo === 'Chileno') {
 
     if (!empty($errores)) {
         $recomendaciones = [
-            "Por este enlace puede investigar acerca de la visa waiver: https://xxxxxx",
-            "Por este enlace puede revisar acerca del RUT chileno: https://xxxxxx",
-            "Por este enlace puede revisar acerca del pasaporte chileno: https://xxxxxx",
+            "Por este enlace puede investigar acerca de la visa waiver: https://www.minrel.gob.cl/minrel/ministerio/programa-visa-waiver",
+            "Por este enlace puede revisar acerca del RUT chileno: https://www.chileatiende.gob.cl/fichas/3430-cedula-de-identidad",
+            "Por este enlace puede revisar acerca del pasaporte chileno: https://www.chileatiende.gob.cl/fichas/3445-pasaporte",
             "Revise el número de RUT y pasaporte",
             "Revise las fechas de emisión y expiración de cada uno"
         ];
