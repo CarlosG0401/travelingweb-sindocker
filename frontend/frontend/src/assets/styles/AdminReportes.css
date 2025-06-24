@@ -12,10 +12,58 @@
   font-weight: bold;
 }
 
-.reports-container {
+.filters-export-container {
   display: flex;
-  flex-direction: column;
-  gap: 2rem;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  gap: 1rem;
+}
+
+.filters-container {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.filters-container input,
+.filters-container select {
+  padding: 0.5rem 0.75rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+  min-width: 150px;
+}
+
+.export-buttons {
+  display: flex;
+  gap: 1rem;
+}
+
+.btn-export {
+  padding: 0.6rem 1.2rem;
+  border-radius: 8px;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+  color: white;
+  transition: background-color 0.3s ease;
+}
+
+.btn-excel {
+  background-color: #2e7d32;
+}
+
+.btn-excel:hover {
+  background-color: #1b4d20;
+}
+
+.btn-pdf {
+  background-color: #c62828;
+}
+
+.btn-pdf:hover {
+  background-color: #7b1a1a;
 }
 
 .stats-cards {
@@ -23,6 +71,7 @@
   flex-wrap: wrap;
   justify-content: center;
   gap: 1.5rem;
+  margin-bottom: 2rem;
 }
 
 .card {
@@ -95,4 +144,5 @@
 .admin-user {
   font-style: italic;
 }
+
 
